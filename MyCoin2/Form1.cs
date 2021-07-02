@@ -66,11 +66,14 @@ namespace MyCoin2
             Load_config_file();
 
             Symbol_to_ID symbol_to_ID = new Symbol_to_ID();
-          
+
             // search symbol coin in file array...
-            for (int file_block = 0; file_block < 3; file_block++)
+          //  int uBound0 = config_array_type.GetUpperBound(0);
+           // int uBound1 = config_array_type.GetUpperBound(1);
+
+            for (int file_block = 0; file_block <= config_array_type.GetUpperBound(0); file_block++)
             {
-                for (int file_line = 0; file_line < 4; file_line++)
+                for (int file_line = 0; file_line <= config_array_type.GetUpperBound(1); file_line++)
                 {                 
                     if(config_array_type[file_block, file_line] == "symbol")
                     {
@@ -88,17 +91,17 @@ namespace MyCoin2
             ID_to_enquiry new_convert = new ID_to_enquiry();
 
             // from Symbol_to_ID in ID_to_enquiry 
-            for (int a = 0; a < 3; a++)
+            for (int counter_for_symbol_ID = 0; counter_for_symbol_ID <= symbol_to_ID.suitable_ID_form_api.GetUpperBound(0); counter_for_symbol_ID++)
             {
-                Console.WriteLine(symbol_to_ID.suitable_ID_form_api[a]);
-                new_convert.id_search[a] = symbol_to_ID.suitable_ID_form_api[a];
+                Console.WriteLine(symbol_to_ID.suitable_ID_form_api[counter_for_symbol_ID]);
+                new_convert.id_search[counter_for_symbol_ID] = symbol_to_ID.suitable_ID_form_api[counter_for_symbol_ID];
             }
 
             // search rest form file
-            for (int file_block = 0; file_block < 3; file_block++)
+            for (int file_block = 0; file_block <= config_array_key.GetUpperBound(0); file_block++)
             {
                 Console.WriteLine("-------------- Here is the block-------------");
-                for (int file_line = 0; file_line < 4; file_line++)
+                for (int file_line = 0; file_line <= config_array_key.GetUpperBound(1); file_line++)
                 {
                     {
                         if (config_array_key[file_block, file_line] == "true")
@@ -120,18 +123,65 @@ namespace MyCoin2
 
         private void button1_Click(object sender, EventArgs e)
         {
-    
-            
+            int[] a = new int[17];
+            a[0] = 0;
+            a[1] = 1;
+            a[2] = 2;
+            a[3] = 3;
+            a[4] = 4;
+            a[5] = 5;
+            a[6] = 7;
+
+            //    for (int file_line = 0; file_line < 4; file_line++)
+            //   {
+
+            //              Console.WriteLine(a[file_line].ToString());
+            //  }
+
+            foreach (int number in a)
+            {
+                Console.WriteLine(number);
+                if(number == 0)
+                {
+                    Console.WriteLine("NNNNNNNNNNNN");
+                }
+            }
+
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            int[,] A = new int[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }, { 10, 11, 12 } };
+          
 
+            int j = 0;
+            foreach (int i in A)
+            {
+                if ((j % 2) == 1)
+                    Console.WriteLine(i + " ");
+                else
+                    Console.Write(i + " ");
+                j++;
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
-        {           
+        {
+
+            string fullPath = "xxx1211212.txt";
+            using (StreamWriter writer = new StreamWriter(fullPath))
+            {
+                writer.WriteLine("Monica Rathbun \u0022");
+                writer.WriteLine("Vidya Agarwal");
+                writer.WriteLine("Mahesh Chand");
+                writer.WriteLine("Vijay Anand");
+                writer.WriteLine("Jignesh Trivedi");
+            }
+            // Read a file  
+            string readText = File.ReadAllText(fullPath);
+            Console.WriteLine(readText);
+
         }
     }
 }
