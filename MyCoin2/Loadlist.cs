@@ -52,7 +52,7 @@ namespace MyCoin2
                 Console.WriteLine("-x-> id: " + id_search[file_block]);
                 saving_string[saving_counter] = "    {";
                 saving_counter++;
-                saving_string[saving_counter] = "      \u0022symbol\u0022: \u0022" + id_search[file_block] + "\u0022,";
+                saving_string[saving_counter] = "      \u0022ID\u0022: \u0022" + id_search[file_block] + "\u0022,";
                 saving_counter++;
 
                 for (int coinline_form_web = 0; coinline_form_web <= search_return.GetUpperBound(1); coinline_form_web++)     
@@ -77,7 +77,7 @@ namespace MyCoin2
                 saving_counter++;
             }
 
-            string fullPath = "output.txt";
+            string fullPath = "output.json";
             using (StreamWriter writer = new StreamWriter(fullPath))
             {
                 writer.WriteLine("{");
